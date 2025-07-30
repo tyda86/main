@@ -59,7 +59,7 @@ function App() {
         }`}>
           <div className="flex items-center justify-between h-16 px-6 border-b border-gray-200">
             <div className="flex items-center space-x-3">
-              <div className="p-2 bg-primary-600 rounded-lg">
+              <div className="p-2 bg-blue-600 rounded-lg">
                 <BarChart3 className="h-6 w-6 text-white" />
               </div>
               <h1 className="text-xl font-bold text-gray-900">Budget Manager</h1>
@@ -84,7 +84,7 @@ function App() {
                   }}
                   className={`w-full flex items-center space-x-3 px-4 py-3 text-left rounded-lg transition-colors ${
                     activeTab === item.id
-                      ? 'bg-primary-50 text-primary-700 border border-primary-200'
+                      ? 'bg-blue-50 text-blue-700 border border-blue-200'
                       : 'text-gray-700 hover:bg-gray-100'
                   }`}
                 >
