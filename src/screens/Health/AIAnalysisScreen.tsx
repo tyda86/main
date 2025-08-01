@@ -35,7 +35,7 @@ type RouteProp = RouteProp<RootStackParamList, 'AIAnalysis'>;
 const { width } = Dimensions.get('window');
 
 const AIAnalysisScreen = () => {
-  const navigation = useNavigation<NavigationProp>();
+  const navigation = useNavigation();
   const route = useRoute<RouteProp>();
   const theme = useTheme();
   const { state, saveAIAnalysis } = useAppContext();
@@ -51,7 +51,7 @@ const AIAnalysisScreen = () => {
   useEffect(() => {
     if (!pet) {
       Alert.alert('Error', 'Pet not found', [
-        { text: 'OK', onPress: () => navigation.goBack() }
+        { text: 'OK', onPress: () => navigation?.goBack?.() }
       ]);
     }
   }, [pet, navigation]);

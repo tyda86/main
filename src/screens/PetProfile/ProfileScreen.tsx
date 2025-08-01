@@ -25,7 +25,7 @@ import { RootStackParamList, Pet } from '../../types';
 type NavigationProp = StackNavigationProp<RootStackParamList>;
 
 const ProfileScreen = () => {
-  const navigation = useNavigation<NavigationProp>();
+  const navigation = useNavigation();
   const theme = useTheme();
   const { state } = useAppContext();
 
@@ -80,7 +80,7 @@ const ProfileScreen = () => {
         </Text>
         <Button
           mode="contained"
-          onPress={() => navigation.navigate('AddPet')}
+          onPress={() => navigation?.navigate?.('AddPet')}
           style={styles.addButton}
           contentStyle={styles.addButtonContent}
         >

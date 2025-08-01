@@ -31,7 +31,7 @@ type NavigationProp = StackNavigationProp<RootStackParamList>;
 const { width } = Dimensions.get('window');
 
 const HomeScreen = () => {
-  const navigation = useNavigation<NavigationProp>();
+  const navigation = useNavigation();
   const theme = useTheme();
   const { state } = useAppContext();
   const [refreshing, setRefreshing] = useState(false);
@@ -150,7 +150,7 @@ const HomeScreen = () => {
         </Text>
         <Button
           mode="contained"
-          onPress={() => navigation.navigate('AddPet')}
+          onPress={() => navigation?.navigate?.('AddPet')}
           style={styles.addButton}
           contentStyle={styles.addButtonContent}
         >

@@ -26,7 +26,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { useAppContext } from '../../context/AppContext';
 import { RootStackParamList, Pet } from '../../types';
 
-type NavigationProp = StackNavigationProp<RootStackParamList>;
+type NavigationProp = StackNavigationProp<RootStackParamList, 'AddPet'>;
 
 // Custom Segmented Control Component
 interface SegmentedControlProps {
@@ -86,7 +86,7 @@ const SegmentedControl: React.FC<SegmentedControlProps> = ({
 };
 
 const AddPetScreen = () => {
-  const navigation = useNavigation<NavigationProp>();
+  const navigation = useNavigation();
   const theme = useTheme();
   const { savePet } = useAppContext();
 
@@ -239,7 +239,7 @@ const AddPetScreen = () => {
       Alert.alert(
         'Success!',
         `${newPet.name} has been added to your pets!`,
-        [{ text: 'OK', onPress: () => navigation.goBack() }]
+        [{ text: 'OK', onPress: () => navigation?.goBack?.() }]
       );
     } catch (error) {
       console.error('Error saving pet:', error);
