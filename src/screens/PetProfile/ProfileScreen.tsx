@@ -122,7 +122,6 @@ const ProfileScreen = () => {
                         icon={getSpeciesIcon(pet.species)}
                         style={[styles.speciesChip, { backgroundColor: theme.colors.primaryContainer }]}
                         textStyle={{ color: theme.colors.onPrimaryContainer }}
-                        compact
                       >
                         {pet.species}
                       </Chip>
@@ -174,7 +173,6 @@ const ProfileScreen = () => {
                 mode="outlined"
                 onPress={() => navigation.navigate('EditPet', { petId: pet.id })}
                 style={styles.actionButton}
-                compact
               >
                 Edit
               </Button>
@@ -182,7 +180,6 @@ const ProfileScreen = () => {
                 mode="contained"
                 onPress={() => navigation.navigate('AIAnalysis', { petId: pet.id })}
                 style={styles.actionButton}
-                compact
               >
                 AI Scan
               </Button>

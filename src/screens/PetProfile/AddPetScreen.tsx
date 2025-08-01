@@ -14,7 +14,6 @@ import {
   Card,
   Avatar,
   useTheme,
-  SegmentedButtons,
   Menu,
   Divider,
 } from 'react-native-paper';
@@ -28,6 +27,63 @@ import { useAppContext } from '../../context/AppContext';
 import { RootStackParamList, Pet } from '../../types';
 
 type NavigationProp = StackNavigationProp<RootStackParamList>;
+
+// Custom Segmented Control Component
+interface SegmentedControlProps {
+  options: { value: string; label: string; icon?: string }[];
+  selectedValue: string;
+  onValueChange: (value: string) => void;
+  style?: any;
+}
+
+const SegmentedControl: React.FC<SegmentedControlProps> = ({
+  options,
+  selectedValue,
+  onValueChange,
+  style,
+}) => {
+  const theme = useTheme();
+
+  return (
+    <View style={[styles.segmentedControl, style]}>
+      {options.map((option, index) => (
+        <TouchableOpacity
+          key={option.value}
+          style={[
+            styles.segmentButton,
+            {
+              backgroundColor: selectedValue === option.value 
+                ? theme.colors.primary 
+                : theme.colors.surface,
+              borderColor: theme.colors.outline,
+            },
+            index === 0 && styles.segmentButtonFirst,
+            index === options.length - 1 && styles.segmentButtonLast,
+          ]}
+          onPress={() => onValueChange(option.value)}
+        >
+          {option.icon && (
+            <Ionicons
+              name={option.icon as any}
+              size={16}
+              color={selectedValue === option.value ? 'white' : theme.colors.onSurface}
+              style={styles.segmentIcon}
+            />
+          )}
+          <Text
+            variant="bodyMedium"
+            style={{
+              color: selectedValue === option.value ? 'white' : theme.colors.onSurface,
+              fontWeight: selectedValue === option.value ? 'bold' : 'normal',
+            }}
+          >
+            {option.label}
+          </Text>
+        </TouchableOpacity>
+      ))}
+    </View>
+  );
+};
 
 const AddPetScreen = () => {
   const navigation = useNavigation<NavigationProp>();
@@ -200,6 +256,19 @@ const AddPetScreen = () => {
     }
   };
 
+  const speciesOptions = [
+    { value: 'dog', label: 'Dog', icon: 'paw' },
+    { value: 'cat', label: 'Cat', icon: 'paw' },
+    { value: 'bird', label: 'Bird', icon: 'airplane' },
+    { value: 'rabbit', label: 'Rabbit', icon: 'leaf' },
+    { value: 'other', label: 'Other', icon: 'help' },
+  ];
+
+  const genderOptions = [
+    { value: 'male', label: 'Male', icon: 'male' },
+    { value: 'female', label: 'Female', icon: 'female' },
+  ];
+
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
@@ -244,8 +313,9 @@ const AddPetScreen = () => {
             <Text variant="bodyMedium" style={[styles.fieldLabel, { color: theme.colors.onSurface }]}>
               Species *
             </Text>
-            <SegmentedButtons
-              value={formData.species}
+            <SegmentedControl
+              options={speciesOptions}
+              selectedValue={formData.species}
               onValueChange={(value) => {
                 setFormData(prev => ({ 
                   ...prev, 
@@ -253,13 +323,6 @@ const AddPetScreen = () => {
                   breed: '' // Reset breed when species changes
                 }));
               }}
-              buttons={[
-                { value: 'dog', label: 'Dog', icon: 'dog' },
-                { value: 'cat', label: 'Cat', icon: 'cat' },
-                { value: 'bird', label: 'Bird', icon: 'bird' },
-                { value: 'rabbit', label: 'Rabbit', icon: 'rabbit' },
-                { value: 'other', label: 'Other', icon: 'help' },
-              ]}
               style={styles.segmentedButtons}
             />
 
@@ -298,13 +361,10 @@ const AddPetScreen = () => {
             <Text variant="bodyMedium" style={[styles.fieldLabel, { color: theme.colors.onSurface }]}>
               Gender *
             </Text>
-            <SegmentedButtons
-              value={formData.gender}
+            <SegmentedControl
+              options={genderOptions}
+              selectedValue={formData.gender}
               onValueChange={(value) => setFormData(prev => ({ ...prev, gender: value as typeof formData.gender }))}
-              buttons={[
-                { value: 'male', label: 'Male', icon: 'gender-male' },
-                { value: 'female', label: 'Female', icon: 'gender-female' },
-              ]}
               style={styles.segmentedButtons}
             />
           </Card.Content>
@@ -471,6 +531,33 @@ const styles = StyleSheet.create({
   },
   segmentedButtons: {
     marginBottom: 16,
+  },
+  segmentedControl: {
+    flexDirection: 'row',
+    borderRadius: 8,
+    overflow: 'hidden',
+    borderWidth: 1,
+  },
+  segmentButton: {
+    flex: 1,
+    paddingVertical: 12,
+    paddingHorizontal: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    borderRightWidth: 1,
+  },
+  segmentButtonFirst: {
+    borderTopLeftRadius: 8,
+    borderBottomLeftRadius: 8,
+  },
+  segmentButtonLast: {
+    borderTopRightRadius: 8,
+    borderBottomRightRadius: 8,
+    borderRightWidth: 0,
+  },
+  segmentIcon: {
+    marginRight: 4,
   },
   buttonContainer: {
     margin: 16,
