@@ -8,9 +8,9 @@ import {
   Dimensions,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { useTheme } from '@contexts/ThemeContext';
-import { commonStyles } from '@utils/theme';
-import { Anime } from '@types/index';
+import { useTheme } from '../contexts/ThemeContext';
+import { commonStyles } from '../utils/theme';
+import { Anime } from '../types/index';
 
 interface AnimeCardProps {
   anime: Anime;

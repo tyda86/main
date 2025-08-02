@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { Appearance } from 'react-native';
-import { Theme, getTheme, lightTheme } from '@utils/theme';
-import { StorageService } from '@services/storageService';
+import { Theme, getTheme, lightTheme } from '../utils/theme';
+import { StorageService } from '../services/storageService';
 
 interface ThemeContextType {
   theme: Theme;

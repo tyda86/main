@@ -297,6 +297,19 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 ### Common Issues
 
+**"ReferenceError: Property 'require' doesn't exist" (Hermes Engine)**
+1. Clear Metro cache: `npm run start:reset`
+2. Clean and reinstall dependencies: `npm run clean`
+3. For Android: `npm run clean:android`
+4. For iOS: `npm run clean:ios`
+5. Restart Metro bundler: `npm start`
+6. If still failing, try: `rm -rf node_modules && npm install && npm start`
+
+**Module resolution errors**
+- All import paths have been converted to relative imports for Hermes compatibility
+- If you see import errors, ensure all paths use `./` or `../` syntax
+- Run `npm run setup` for automated configuration
+
 **Notifications not working**
 - Check device notification permissions
 - Verify notification settings in app

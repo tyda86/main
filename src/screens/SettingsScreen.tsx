@@ -11,11 +11,11 @@ import {
 import { useFocusEffect } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import { useTheme } from '@contexts/ThemeContext';
-import { commonStyles } from '@utils/theme';
-import { StorageService } from '@services/storageService';
-import { NotificationService } from '@services/notificationService';
-import { AppSettings, NotificationSettings } from '@types/index';
+import { useTheme } from '../contexts/ThemeContext';
+import { commonStyles } from '../utils/theme';
+import { StorageService } from '../services/storageService';
+import { NotificationService } from '../services/notificationService';
+import { AppSettings, NotificationSettings } from '../types/index';
 
 const SettingsScreen: React.FC = () => {
   const { theme, themeMode, setThemeMode } = useTheme();

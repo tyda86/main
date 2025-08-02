@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { UserAnime, AppSettings, NotificationSettings } from '@types/index';
+import { UserAnime, AppSettings, NotificationSettings } from '../types/index';
 
 const STORAGE_KEYS = {
   USER_ANIME_LIST: 'user_anime_list',

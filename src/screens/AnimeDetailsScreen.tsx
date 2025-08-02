@@ -13,12 +13,12 @@ import {
 import { RouteProp, useRoute, useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import { useTheme } from '@contexts/ThemeContext';
-import { commonStyles } from '@utils/theme';
-import { AniListApi } from '@services/anilistApi';
-import { StorageService } from '@services/storageService';
-import { NotificationService } from '@services/notificationService';
-import { Anime, UserAnime, RootStackParamList } from '@types/index';
+import { useTheme } from '../contexts/ThemeContext';
+import { commonStyles } from '../utils/theme';
+import { AniListApi } from '../services/anilistApi';
+import { StorageService } from '../services/storageService';
+import { NotificationService } from '../services/notificationService';
+import { Anime, UserAnime, RootStackParamList } from '../types/index';
 
 type AnimeDetailsRouteProp = RouteProp<RootStackParamList, 'AnimeDetails'>;
 

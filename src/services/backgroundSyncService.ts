@@ -2,7 +2,7 @@ import { AppState, AppStateStatus } from 'react-native';
 import { StorageService } from './storageService';
 import { AniListApi } from './anilistApi';
 import { NotificationService } from './notificationService';
-import { UserAnime, Episode } from '@types/index';
+import { UserAnime, Episode } from '../types/index';
 
 export class BackgroundSyncService {
   private static syncInterval: NodeJS.Timeout | null = null;

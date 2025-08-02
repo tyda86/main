@@ -5,18 +5,20 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import { ThemeProvider, useTheme } from '@contexts/ThemeContext';
-import { NotificationService } from '@services/notificationService';
-import { BackgroundSyncService } from '@services/backgroundSyncService';
+import { setupApp } from './utils/setupApp';
+
+import { ThemeProvider, useTheme } from './contexts/ThemeContext';
+import { NotificationService } from './services/notificationService';
+import { BackgroundSyncService } from './services/backgroundSyncService';
 
 // Import screens
-import HomeScreen from '@screens/HomeScreen';
-import SearchScreen from '@screens/SearchScreen';
-import MyAnimeScreen from '@screens/MyAnimeScreen';
-import SettingsScreen from '@screens/SettingsScreen';
-import AnimeDetailsScreen from '@screens/AnimeDetailsScreen';
+import HomeScreen from './screens/HomeScreen';
+import SearchScreen from './screens/SearchScreen';
+import MyAnimeScreen from './screens/MyAnimeScreen';
+import SettingsScreen from './screens/SettingsScreen';
+import AnimeDetailsScreen from './screens/AnimeDetailsScreen';
 
-import { RootStackParamList } from '@types/index';
+import { RootStackParamList } from './types/index';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator<RootStackParamList>();
@@ -124,6 +126,9 @@ const AppContent = () => {
   const { theme, isDark } = useTheme();
 
   useEffect(() => {
+    // Setup app
+    setupApp();
+    
     // Initialize notification service
     NotificationService.initialize();
     NotificationService.requestPermissions();

@@ -12,13 +12,13 @@ import {
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
-import { useTheme } from '@contexts/ThemeContext';
-import { commonStyles } from '@utils/theme';
-import { AniListApi } from '@services/anilistApi';
-import { StorageService } from '@services/storageService';
-import { NotificationService } from '@services/notificationService';
-import AnimeCard from '@components/AnimeCard';
-import { Anime, UserAnime, RootStackParamList } from '@types/index';
+import { useTheme } from '../contexts/ThemeContext';
+import { commonStyles } from '../utils/theme';
+import { AniListApi } from '../services/anilistApi';
+import { StorageService } from '../services/storageService';
+import { NotificationService } from '../services/notificationService';
+import AnimeCard from '../components/AnimeCard';
+import { Anime, UserAnime, RootStackParamList } from '../types/index';
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList>;
 

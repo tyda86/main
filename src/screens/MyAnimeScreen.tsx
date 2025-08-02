@@ -12,12 +12,12 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import { useTheme } from '@contexts/ThemeContext';
-import { commonStyles } from '@utils/theme';
-import { StorageService } from '@services/storageService';
-import { NotificationService } from '@services/notificationService';
-import AnimeCard from '@components/AnimeCard';
-import { UserAnime, RootStackParamList } from '@types/index';
+import { useTheme } from '../contexts/ThemeContext';
+import { commonStyles } from '../utils/theme';
+import { StorageService } from '../services/storageService';
+import { NotificationService } from '../services/notificationService';
+import AnimeCard from '../components/AnimeCard';
+import { UserAnime, RootStackParamList } from '../types/index';
 
 type MyAnimeScreenNavigationProp = StackNavigationProp<RootStackParamList>;
 

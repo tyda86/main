@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Anime, SearchFilters } from '@types/index';
+import { Anime, SearchFilters } from '../types/index';
 
 const ANILIST_API_URL = 'https://graphql.anilist.co';
 

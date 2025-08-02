@@ -2,7 +2,7 @@ import PushNotification from 'react-native-push-notification';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import { Platform } from 'react-native';
 import { StorageService } from './storageService';
-import { Anime, Episode } from '@types/index';
+import { Anime, Episode } from '../types/index';
 
 export class NotificationService {
   private static isInitialized = false;
