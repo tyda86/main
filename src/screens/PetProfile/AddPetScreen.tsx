@@ -14,8 +14,6 @@ import {
   Card,
   Avatar,
   useTheme,
-  Menu,
-  Divider,
 } from 'react-native-paper';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -104,31 +102,9 @@ const AddPetScreen = () => {
   });
 
   const [showDatePicker, setShowDatePicker] = useState(false);
-  const [breedMenuVisible, setBreedMenuVisible] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const dogBreeds = [
-    'Golden Retriever', 'Labrador', 'German Shepherd', 'Bulldog', 'Poodle',
-    'Beagle', 'Rottweiler', 'Yorkshire Terrier', 'Dachshund', 'Siberian Husky',
-    'Mixed Breed', 'Other'
-  ];
 
-  const catBreeds = [
-    'Persian', 'Maine Coon', 'Siamese', 'Ragdoll', 'British Shorthair',
-    'Abyssinian', 'Russian Blue', 'Scottish Fold', 'Bengal', 'Sphynx',
-    'Mixed Breed', 'Other'
-  ];
-
-  const getBreedOptions = () => {
-    switch (formData.species) {
-      case 'dog':
-        return dogBreeds;
-      case 'cat':
-        return catBreeds;
-      default:
-        return ['Mixed Breed', 'Other'];
-    }
-  };
 
   const handleImagePicker = async () => {
     try {
@@ -319,44 +295,20 @@ const AddPetScreen = () => {
               onValueChange={(value) => {
                 setFormData(prev => ({ 
                   ...prev, 
-                  species: value as typeof formData.species,
-                  breed: '' // Reset breed when species changes
+                  species: value as typeof formData.species
                 }));
               }}
               style={styles.segmentedButtons}
             />
 
-            <Menu
-              visible={breedMenuVisible}
-              onDismiss={() => setBreedMenuVisible(false)}
-              anchor={
-                <TextInput
-                  label="Breed *"
-                  value={formData.breed}
-                  onChangeText={(text) => setFormData(prev => ({ ...prev, breed: text }))}
-                  style={styles.input}
-                  mode="outlined"
-                  right={
-                    <TextInput.Icon
-                      icon="chevron-down"
-                      onPress={() => setBreedMenuVisible(true)}
-                    />
-                  }
-                  onFocus={() => setBreedMenuVisible(true)}
-                />
-              }
-            >
-              {getBreedOptions().map((breed) => (
-                <Menu.Item
-                  key={breed}
-                  onPress={() => {
-                    setFormData(prev => ({ ...prev, breed }));
-                    setBreedMenuVisible(false);
-                  }}
-                  title={breed}
-                />
-              ))}
-            </Menu>
+            <TextInput
+              label="Breed *"
+              value={formData.breed}
+              onChangeText={(text) => setFormData(prev => ({ ...prev, breed: text }))}
+              style={styles.input}
+              mode="outlined"
+              placeholder="e.g., Golden Retriever, Mixed Breed, Siamese"
+            />
 
             <Text variant="bodyMedium" style={[styles.fieldLabel, { color: theme.colors.onSurface }]}>
               Gender *
